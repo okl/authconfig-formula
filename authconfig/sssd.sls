@@ -10,6 +10,8 @@
 
 
 sssd:
+  pkg.installed:
+    - name: sssd
   service.running:
     - name: sssd
     - enable: {{ authconfig.sssd.enable }}
@@ -17,4 +19,4 @@ sssd:
       - pkg: sssd
     - watch:
       - file: /etc/sssd/sssd.conf
-    
+
