@@ -1,3 +1,5 @@
+{% from "authconfig/map.jinja" import authconfig with context %}
+
 /etc/ldap.secret:
   file.managed:
     - user: root
