@@ -11,10 +11,10 @@
 
 sssd:
   service.running:
-    - name: {{ authconfig.sssd.service }}   
+    - name: sssd
     - enable: {{ authconfig.sssd.enable }}
     - require: 
-      - pkg: {{ authconfig.sssd.package }}
+      - pkg: sssd
     - watch:
       - file: /etc/sssd/sssd.conf
     
