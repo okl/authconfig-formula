@@ -4,7 +4,7 @@
     {% endfor %}
 {% endmacro %}
 
-{% set authconfig = salt['pillar.get']('authconfig:ng', {
+{% set authconfig = salt['pillar.get']('authconfig', {
     'lookup': salt['grains.filter_by']({
         'Debian': {
             'package': 'authconfig',
