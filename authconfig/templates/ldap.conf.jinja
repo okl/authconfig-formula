@@ -16,7 +16,7 @@ tls_checkpeer		no
 
 
 
-uri			{% for server in authconfig.ldap.servers -%}{{ server }} {%- endfor %}
+uri			{% for server in authconfig.ldap.servers %}{{ server }} {% endfor %}
 nss_base_passwd		ou=People,{{ authconfig.ldap.base }}?one
 nss_base_shadow		ou=People,{{ authconfig.ldap.base }}?one
 nss_base_group		ou=Group,{{ authconfig.ldap.base }}?one
