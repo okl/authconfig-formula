@@ -6,3 +6,10 @@
     - mode: 0400
 
 
+/etc/ldap.conf:
+  file.managed:
+    - user: root
+    - group: root
+    - template: jinja
+    - source: salt:///authconfig/templates/ldap.conf.jinja
+    - mode: 0644
