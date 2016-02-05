@@ -43,15 +43,3 @@
     },
 }, merge=True) %}
 
-{% if 'user' not in authconfig.server.config %}
-{% do authconfig.server.config.update({
-    'user': authconfig.lookup.webuser,
-})%}
-{% endif %}
-
-{% if 'pid' not in authconfig.server.config and 'pid_file' in authconfig.lookup %}
-{% do authconfig.server.config.update({
-    'pid': authconfig.lookup.pid_file,
-})%}
-{% endif %}
-
