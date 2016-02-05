@@ -9,7 +9,10 @@
     - source: salt:///authconfig/templates/etc-nslcd.conf.jinja
 
 nslcd:
+  pkg.installed:
+    - name: nslcd
   service.running:
     - enable: True
     - watch:
       - file: /etc/nslcd.conf
+      - pkg: nslcd
