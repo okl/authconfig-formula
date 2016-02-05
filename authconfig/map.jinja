@@ -4,24 +4,17 @@
     {% endfor %}
 {% endmacro %}
 
-{% set authconfig = salt['pillar.get']('authconfig:lookup', {
+{% set authconfig = salt['pillar.get']('authconfig', {
     'lookup': salt['grains.filter_by']({
         'Debian': {
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'www-data',
-            'sssd': {
-                'enable': True,
-            },
         },
         'RedHat': {
-            'sssd_package': 'sssd',
             'service': 'authconfig',
             'webuser': 'authconfig',
             'rh_os_releasever': '$releasever',
-            'sssd': {
-                'enable': True,
-            },
         },
         'Suse': {
             'package': 'authconfig',
@@ -39,6 +32,9 @@
             'webuser': 'authconfig',
         },
     }, default='RedHat' ),
+    'sssd': {
+        'enable': True,
+    },
     'package': {
         'opts': {},
     },
