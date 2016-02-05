@@ -1,14 +1,9 @@
 {% from "authconfig/map.jinja" import authconfig with context %}
 
-/etc/sysconfig/authconfig:
+/etc/pam.d/password-auth-ac:
   file.managed:
     - user: root
     - group: root
     - mode: 0644
     - template: jinja
-    - source: salt:///authconfig/templates/etc-sysconfig-authconfig.jinja
-
-include:
-  - .ldap
-  - .nsswitch
-  - .pam
+    - source: salt:///authconfig/templates/etc-pam.d-password-auth-ac
