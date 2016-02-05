@@ -7,3 +7,8 @@
     - mode: 0644
     - template: jinja
     - source: salt:///authconfig/templates/etc-pam.d-password-auth-ac
+
+/etc/pam_ldap.conf:
+  file.symlink:
+    - target: /etc/ldap.conf
+    
