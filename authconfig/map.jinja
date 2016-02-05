@@ -10,55 +10,29 @@
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'www-data',
-            'conf_file': '/etc/authconfig/authconfig.conf',
-            'vhost_available': '/etc/authconfig/sites-available',
-            'vhost_enabled': '/etc/authconfig/sites-enabled',
-            'vhost_use_symlink': True,
-            'pid_file': '/run/authconfig.pid',
         },
         'RedHat': {
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'authconfig',
-            'conf_file': '/etc/authconfig/authconfig.conf',
-            'vhost_available': '/etc/authconfig/conf.d',
-            'vhost_enabled': '/etc/authconfig/conf.d',
-            'vhost_use_symlink': False,
-            'pid_file': '/var/run/authconfig.pid',
             'rh_os_releasever': '$releasever',
         },
         'Suse': {
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'authconfig',
-            'conf_file': '/etc/authconfig/authconfig.conf',
-            'vhost_available': '/etc/authconfig/conf.d',
-            'vhost_enabled': '/etc/authconfig/conf.d',
-            'vhost_use_symlink': False,
-            'pid_file': '/run/authconfig.pid',
         },
         'Arch': {
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'http',
-            'conf_file': '/etc/authconfig/authconfig.conf',
-            'vhost_available': '/etc/authconfig/sites-available',
-            'vhost_enabled': '/etc/authconfig/sites-enabled',
-            'vhost_use_symlink': True,
         },
         'Gentoo': {
             'package': 'www-servers/authconfig',
             'service': 'authconfig',
             'webuser': 'authconfig',
-            'conf_file': '/etc/authconfig/authconfig.conf',
-            'vhost_available': '/etc/authconfig/sites-available',
-            'vhost_enabled': '/etc/authconfig/sites-enabled',
-            'vhost_use_symlink': True,
         },
     }, default='RedHat' ),
-    'install_from_source': False,
-    'install_from_ppa': False,
-    'install_from_repo': False,
     'ppa_version': 'stable',
     'package': {
         'opts': {},
@@ -66,102 +40,6 @@
     'service': {
         'enable': True,
         'opts': {},
-    },
-    'etc-sysconfig-authconfig': {
-        'opts': {},
-        'config': {
-            - 'IPADOMAINJOINED=no'
-            - 'USEMKHOMEDIR=no'
-            - 'USEPAMACCESS=no'
-            - 'CACHECREDENTIALS=yes'
-            - 'USESSSDAUTH=no'
-            - 'USESHADOW=yes'
-            - 'USEWINBIND=no'
-            - 'USEDB=no'
-            - 'FORCELEGACY=no'
-            - 'USEFPRINTD=yes'
-            - 'FORCESMARTCARD=no'
-            - 'PASSWDALGORITHM=md5'
-            - 'USELDAPAUTH=no'
-            - 'USEPASSWDQC=no'
-            - 'IPAV2NONTP=no'
-            - 'USELOCAUTHORIZE=yes'
-            - 'USECRACKLIB=yes'
-            - 'USEIPAV2=no'
-            - 'USEWINBINDAUTH=no'
-            - 'USESMARTCARD=no'
-            - 'USELDAP=no'
-            - 'USENIS=no'
-            - 'USEKERBEROS=no'
-            - 'USESYSNETAUTH=no'
-            - 'USESSSD=no'
-            - 'USEHESIOD=no'
-        },
-    },
-    'pam_ldap_conf': {
-        'opts': {},
-        'config': {
-            - base dc=example,dc=com
-            - uri ldap://127.0.0.1/
-            - ssl no
-            - tls_cacertdir /etc/openldap/cacerts
-            - pam_password md5
-        },
-    },
-    'nslcd': {
-        'opts': {},
-        'config': {
-            - uid nslcd
-            - gid ldap
-            - uri ldap://127.0.0.1/
-            - base dc=example,dc=com
-            - ssl no
-            - tls_cacertdir /etc/openldap/cacerts
-        },
-    },
-    'nsswitch': {
-        'opts': {},
-        'config': {
-            'passwd': 'files',
-            'shadow': 'files',
-            'group': 'files',
-
-            'hosts': 'files dns',
-            'bootparams': 'nisplus [NOTFOUND=return] files',
-            'ethers': 'files',
-            'netmasks': 'files',
-            'protocols': 'files',
-            'rpc': 'files',
-            'services': 'files',
-            'netgroup': 'nisplus',
-            'publickey': 'nisplus',
-            'automount': 'files nisplus',
-            'aliases': 'files nisplus',
-        },
-    },
-    'pamd-password-auth-ac': {
-        'opts': {},
-        'config': {
-            'auth': 
-              - 'required	pam_env.so'
-              - 'sufficient	pam_unix.so nullok try_first_pass'
-              - 'requisite	pam_succeed_if.so uid >= 500 quiet'
-              - 'required	pam_deny.so'
-            'account': 
-              - 'required	pam_unix.so'
-              - 'required	pam_localuser.so'
-              - 'required	pam_succeed_if.so uid < 500 quiet'
-              - 'required	pam_permit.so'
-            'password': 
-              - 'requisite	pam_cracklib.so try_first_pass retry=3 type='
-              - 'sufficient	pam_unix.so md5 shadow nullok try_first_pass use_authtok'
-              - 'required	pam_deny.so'
-            'session': 
-              - 'optional	pam_keyinit.so revoke'
-              - 'required	pam_limits.so'
-              - '[success=1 default=ignore] pam_succeed_if.so service in crond quiet use_uid'
-              - 'required	pam_unix.so'
-        },
     },
 }, merge=True) %}
 
