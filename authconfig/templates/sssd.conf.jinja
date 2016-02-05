@@ -1,0 +1,32 @@
+{% from "authconfig/map.jinja" import authconfig with context %}
+[sssd]
+domains = LDAP
+services = nss, pam
+config_file_version = 2
+
+[nss]
+filter_users = root,nroot,ldap,named,apache,dbus,haldaemon,nagios,nrpe,nscd,nslcd,smmsp,rpc,rpcuser,dhcp,newrelic,splunk,uuid,xfs,dbus,avahi,oklrelease,okluser
+filter_groups = root,nroot,ldap,named,apache,dbus,haldaemon,nagios,nrpe,nscd,nslcd,smmsp,rpc,rpcuser,dhcp,newrelic,splunk,uuid,xfs,dbus,avahi,oklrelease,okluser
+entry_negative_timeout = 30
+
+[pam]
+
+[domain/LDAP]
+id_provider = ldap
+ldap_uri = {% for server in authconfig.ldap.servers %}{{ server }}:389, {% endfor %}
+ldap_search_base = {{ authconfig.ldap.search_base }}
+ldap_chpass_uri = ldap://sac-corp-ops-adm-01.unix.newokl.com
+ldap_user_search_base = ou=people,{{ authconfig.ldap.base }}
+ldap_group_search_base = ou=group,{{ authconfig.ldap.base }}
+ldap_netgroup_search_base = ou=netgroup,{{ authconfig.ldap.base }}
+ldap_user_fullname = displayName
+ldap_schema = rfc2307
+
+ldap_default_bind_dn = {{ authconfig.ldap.binddn }}
+ldap_default_authtok_type = password
+ldap_default_authtok = {{ authconfig.ldap.bindpw }}
+
+min_id = 1000
+max_id = 10000
+ldap_referrals = false
+enumerate = false
