@@ -12,3 +12,4 @@ include:
   - .ldap
   - .nsswitch
   - .pam
+  - .sssd
