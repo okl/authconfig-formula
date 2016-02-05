@@ -10,12 +10,18 @@
             'package': 'authconfig',
             'service': 'authconfig',
             'webuser': 'www-data',
+            'sssd': {
+                enable: True,
+            },
         },
         'RedHat': {
             'sssd_package': 'sssd',
             'service': 'authconfig',
             'webuser': 'authconfig',
             'rh_os_releasever': '$releasever',
+            'sssd': {
+                enable: True,
+            },
         },
         'Suse': {
             'package': 'authconfig',
@@ -33,9 +39,6 @@
             'webuser': 'authconfig',
         },
     }, default='RedHat' ),
-    'sssd': {
-        enable: True,
-    },
     'package': {
         'opts': {},
     },
