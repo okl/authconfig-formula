@@ -13,3 +13,4 @@ include:
   - .nsswitch
   - .pam
   - .sssd
+  - .nslcd
