@@ -1,0 +1,22 @@
+### Salt controlled, not authconfig
+
+passwd:		compat db sss [NOTFOUND=return] ldap
+passwd_compat:	sss [NOTFOUND=return] ldap
+shadow:		compat db sss [NOTFOUND=return] ldap
+shadow_compat:	sss [NOTFOUND=return] ldap
+
+group:      files sss [NOTFOUND=return] ldap db
+
+hosts:      files dns
+
+bootparams: files
+ethers:     files
+netmasks:   files
+networks:   files
+protocols:  files
+rpc:        files
+services:   files
+netgroup:   files sss [NOTFOUND=return] ldap
+publickey:  files
+automount:  files
+aliases:    files
