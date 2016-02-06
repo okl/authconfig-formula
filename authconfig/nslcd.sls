@@ -10,9 +10,10 @@
 
 nslcd:
   pkg.installed:
-    - name: nslcd
+    - name: nss-pam-ldapd
   service.running:
     - enable: True
+    - name: nslcd
     - watch:
       - file: /etc/nslcd.conf
-      - pkg: nslcd
+      - pkg: nss-pam-ldapd
