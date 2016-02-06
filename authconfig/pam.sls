@@ -11,4 +11,4 @@
 /etc/pam_ldap.conf:
   file.symlink:
     - target: /etc/ldap.conf
-    
+    - force: True
