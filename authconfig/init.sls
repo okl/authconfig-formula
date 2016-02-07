@@ -14,3 +14,4 @@ include:
   - .pam
   - .sssd
   - .nslcd
+  - .nscd
