@@ -4,7 +4,7 @@
     - user: root
     - group: root
     - mode: 0644
-    - template: jinja`
+    - template: jinja
 
 
 nscd:
