@@ -1,0 +1,6 @@
+{% from "authconfig/map.jinja" import authconfig with context %}
+URI 		{% for server in authconfig.ldap.servers %}{{ server }} {% endfor %}
+BASE dc=newokl,dc=com
+HOST		{% for server in authconfig.ldap.servers %}{{ server }} {% endfor %} 127.0.0.1
+TLS_CACERT      /etc/ssl/certs/ca-bundle.crt
+TLS_REQCERT     allow

@@ -15,3 +15,4 @@ include:
   - .sssd
   - .nslcd
   - .nscd
+  - .openldap
