@@ -1,0 +1,13 @@
+# $Id: auto.master,v 1.2 1997/10/06 21:52:03 hpa Exp $
+# Sample auto.master file
+# Format of this file:
+# mountpoint map options
+# For details of the format look at autofs(8).
+#/misc	/etc/auto.misc	--timeout=60
+/home	/etc/auto_home	--timeout=300,timeo=100,rsize=8192,wsize=8192,hard,intr
+/xhome	/etc/auto_xhome	--timeout=300,timeo=100,rsize=8192,wsize=8192,hard,intr
+/shome	/etc/auto_shome	--timeout=300,timeo=100,rsize=8192,wsize=8192,hard,intr,vers=3
+/ohome	/etc/auto_home	--timeout=300,hard,bg,nointr,tcp,vers=3,timeo=300,rsize=32768,wsize=32768,noac,vers=3
+/pkg	/etc/auto_pkg	--timeout=300,timeo=100,rsize=8192,wsize=8192,hard,intr
+/net	/etc/auto.net	--timeout=300,timeo=100,rsize=8192,wsize=8192,hard,intr
+/neta	/etc/auto.net	--timeout=300,timeo=100,rsize=32768,wsize=32768,hard,intr,async
