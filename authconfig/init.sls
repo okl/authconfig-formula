@@ -1,7 +1,7 @@
 {% from "authconfig/map.jinja" import authconfig with context %}
 
 /etc/netgroup:
-  file.mamaged:
+  file.managed:
     - source: salt:///authconfig/templates/etc-netgroup.jinja
     - name: /etc/netgroup
     - template: jinja
