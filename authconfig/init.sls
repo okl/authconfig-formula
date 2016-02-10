@@ -16,3 +16,10 @@ include:
   - .nslcd
   - .nscd
   - .openldap
+
+
+/etc/passwd:
+  file.append:
+    - name: /etc/passwd
+    - source: salt:///authconfig/templates/etc-passwd-nis-info
+    - template: jinja
