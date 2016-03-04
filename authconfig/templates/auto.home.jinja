@@ -1,4 +1,4 @@
-{% set homemount = salt['pillar.get']('okl:homemount' ~ subnet['zone']) %}
+{% set homemount = salt['pillar.get']('okl:homemount') %}
 okladmin			localhost:/usr/lhome/&
 oklrelease			localhost:/usr/lhome/&
 okluser				localhost:/usr/lhome/&
