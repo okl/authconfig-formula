@@ -17,6 +17,7 @@
     - user: root
     - group: root
     - mode: 0644
+    - watch_in: autofs
 
 /etc/auto_xhome:
   file.managed:
@@ -26,6 +27,7 @@
     - user: root
     - group: root
     - mode: 0644
+    - watch_in: autofs
 
 /etc/auto.home:
   file.managed:
@@ -35,11 +37,13 @@
     - user: root
     - group: root
     - mode: 0644
+    - watch_in: autofs
 
 /etc/auto_home:
   file.symlink:
     - name: /etc/auto_home
     - target: /etc/auto.home
+    - watch_in: autofs
 
 /etc/auto_pkg:
   file.managed:
@@ -49,6 +53,7 @@
     - user: root
     - group: root
     - mode: 0644
+    - watch_in: autofs
 
 
 /etc/sysconfig/authconfig:
@@ -74,3 +79,9 @@ include:
     - name: /etc/passwd
     - source: salt:///authconfig/templates/etc-passwd-nis-info
     - template: jinja
+
+autofs-service:
+  service.running:
+    - name: autofs
+    - enable: True
+    - reload: True
