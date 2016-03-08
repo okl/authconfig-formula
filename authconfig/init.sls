@@ -29,20 +29,20 @@
     - mode: 0644
     - watch_in: autofs
 
-/etc/auto.home:
+/etc/auto_home:
   file.managed:
-    - name: /etc/auto.home
-    - source: salt:///authconfig/templates/auto.home.jinja
+    - name: /etc/auto_home
+    - source: salt:///authconfig/templates/auto_home.jinja
     - template: jinja
     - user: root
     - group: root
     - mode: 0644
     - watch_in: autofs
 
-/etc/auto_home:
+/etc/auto.home:
   file.symlink:
-    - name: /etc/auto_home
-    - target: /etc/auto.home
+    - name: /etc/auto.home
+    - target: /etc/auto_home
     - watch_in: autofs
 
 /etc/auto_pkg:
