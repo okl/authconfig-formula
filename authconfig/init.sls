@@ -17,7 +17,8 @@
     - user: root
     - group: root
     - mode: 0644
-    - watch_in: autofs
+    - watch_in: 
+      - service: autofs
 
 /etc/auto_xhome:
   file.managed:
@@ -27,7 +28,8 @@
     - user: root
     - group: root
     - mode: 0644
-    - watch_in: autofs
+    - watch_in: 
+      - service: autofs
 
 /etc/auto_home:
   file.managed:
@@ -37,13 +39,15 @@
     - user: root
     - group: root
     - mode: 0644
-    - watch_in: autofs
+    - watch_in: 
+      - service: autofs
 
 /etc/auto.home:
   file.symlink:
     - name: /etc/auto.home
     - target: /etc/auto_home
-    - watch_in: autofs
+    - watch_in: 
+      - service: autofs
 
 /etc/auto_pkg:
   file.managed:
@@ -53,7 +57,8 @@
     - user: root
     - group: root
     - mode: 0644
-    - watch_in: autofs
+    - watch_in: 
+      - service: autofs
 
 
 /etc/sysconfig/authconfig:
